@@ -1,3 +1,5 @@
 .temp/
 .hg/
 mbed/
+.DS_Store
+
