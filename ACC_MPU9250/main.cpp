@@ -43,8 +43,8 @@ void median(int LC,int RC,float BC[1][5]);
 int main(){
     int pcount=0;
     int acount=0;
-    float pres[5][5]={0};
-    float zacc[5][5]={0};
+    float pres[6][5]={0};
+    float zacc[6][5]={0};
     int proopc=0;
     int aroopc=0;
     int plastc=-1;
@@ -74,11 +74,11 @@ int main(){
     while(FLIGHT_ACC!=true)
     {
         alastc++;
-        if(aroopc==5)aroopc=0;
+        if(aroopc==6)aroopc=0;
         pc.printf("Acc: %f, %f, %f\n\r", ax, ay, az);
         mpu.readAccelData(acc);
         zacc[aroopc][alastc]=acc[2]+acc[1]+acc[0] * 16.0 / 32768.0;//３軸の合成値
-        if(alastc==4)
+        if(alastc==5)
         {
             alastc=0;
             void median(int alastc,int aroopc,float zacc);
@@ -103,10 +103,10 @@ int main(){
     while(TOP!=true) 
     {
         plastc++;
-        if(proopc==5)proopc=0;
+        if(proopc==6)proopc=0;
         pc.printf("%04.2f hPa, count %d  \r\n", sensor.getPressure(),pcount);
         pres[proopc][plastc]=sensor.getPressure();
-        if(plastc==4)
+        if(plastc==5)
         {
             plastc=0;
             void median(int plastc,int proopc,float pres);
